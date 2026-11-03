@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="kk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Графтар теориясы (1 сабақ)</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#e8f3f6;--card:#fff;--tx:#1d2b36;--mut:#5b6b78;--ln:#555;--inp:#fff;--bd:#cfd8de}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10242b;--card:#1b2f38;--tx:#e8f0f4;--mut:#9fb2bd;--ln:#aab;--inp:#13232a;--bd:#34505c}}
+:root[data-theme="dark"]{--bg:#10242b;--card:#1b2f38;--tx:#e8f0f4;--mut:#9fb2bd;--ln:#aab;--inp:#13232a;--bd:#34505c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100%}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#1e88c9;color:#fff;padding:12px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header h1{margin:0;font-size:1.25rem}
+.pr{font-weight:600;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:99px}
+main{max-width:1100px;margin:0 auto;padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:16px}
+.card{background:var(--card);border-radius:16px;border:2px solid var(--c);padding:14px 16px 16px}
+.card h2{margin:0 0 4px;font-size:1.1rem;display:flex;gap:10px;align-items:center}
+.card h2 b{background:var(--c);color:#fff;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none}
+.card p{margin:4px 0 10px;color:var(--mut);font-size:.95rem}
+.g{width:100%;max-width:320px;display:block;margin:0 auto 8px}
+.row{display:flex;gap:8px;align-items:center;margin:6px 0;flex-wrap:wrap}
+.row label{flex:1 1 220px}
+input,select{font:inherit;color:var(--tx);background:var(--inp);border:1.5px solid var(--bd);border-radius:8px;padding:5px 8px;min-width:0}
+input[type=text]{flex:1 1 140px}
+input.n{width:64px}
+input.ok,select.ok{border-color:#2e9d4f;background:#e3f6e8;color:#123}
+input.bad,select.bad{border-color:#d33;background:#fde6e6;color:#123}
+.mw{overflow-x:auto}
+.mx{border-collapse:collapse;margin:6px auto}
+.mx th{padding:4px 8px;color:var(--mut)}
+.mx input{width:42px;text-align:center;padding:4px 2px}
+.act{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+button{font:inherit;border:0;border-radius:8px;padding:7px 16px;background:var(--c);color:#fff;cursor:pointer;font-weight:600}
+button.s{background:transparent;color:var(--c);border:1.5px solid var(--c)}
+.m{font-weight:600}.m.ok{color:#2e9d4f}.m.bad{color:#d33}.m.i{color:var(--mut);font-weight:400}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px}
+.gs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.gs div{text-align:center}.gs svg{width:100%}
+.pairs{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center}
+footer{max-width:1100px;margin:0 auto;padding:0 16px 28px}
+.t11{display:block;text-align:center;background:linear-gradient(135deg,#1e88c9,#8a4fd6);color:#fff;border-radius:20px;padding:26px 18px;text-decoration:none;box-shadow:0 6px 20px rgba(30,136,201,.4)}
+.t11 b{display:inline-grid;place-items:center;background:#fff;color:#1e88c9;width:52px;height:52px;border-radius:50%;font-size:1.6rem;margin-bottom:8px}
+.t11 span{display:block;font-size:clamp(1.3rem,4.5vw,2rem);font-weight:800;line-height:1.3}
+.t11 em{display:inline-block;margin-top:12px;background:#fff;color:#1e88c9;font-style:normal;font-weight:700;padding:10px 22px;border-radius:99px;font-size:1.1rem}
+a{color:#1e88c9}
+</style></head><body>
+<header><h1>Графтар теориясы (1 сабақ)</h1><span class="pr" id="pr">Орындалды: 0 / 10</span></header>
+<main id="app"></main>
+<footer><a class="t11" href="https://learningapps.org/watch?v=pm4znj2j324" target="_blank" rel="noopener"><b>11</b><span>Тапсырманы орында!</span><span style="font-size:1rem;font-weight:500;margin-top:4px">Сілтемеге өтіңіз</span><em>Тапсырмаға өту →</em></a></footer>
+<script>
+const COL={A:'#2f8fe0',B:'#e04040',C:'#2fb24f',D:'#f2c21b',E:'#9b4fd6'};
+const N5=['A','B','C','D','E'];
+const P={A:[150,30],B:[40,100],C:[260,100],D:[80,190],E:[220,190]};
+const P5={A:[30,100],B:[110,40],C:[110,160],D:[200,100],E:[280,100]};
+const P10={A:[30,110],B:[130,40],C:[270,40],D:[120,170],E:[250,150]};
+const Q={A:[70,18],B:[28,58],C:[112,58],D:[70,96]};
+const E1=[['A','B'],['A','C'],['B','D'],['B','E'],['C','E'],['D','E']];
+const E3=[['A','B',2],['A','C',4],['B','C',1],['B','D',2],['C','E',3],['D','E',5]];
+const E5=[['A','B',2],['B','D',3],['A','C',1],['C','D',4],['D','E',2]];
+const E7=[['A','B',4],['A','C',2],['B','C',5],['B','D',1],['C','D',3]];
+const E9=[['A','B'],['A','C'],['B','C'],['C','D'],['D','E']];
+const E10=[['A','B',1],['A','D',2],['B','C',2],['B','E',7],['D','E',4],['E','C',3]];
+let uid=0;
+function G(pos,edges,o={}){const id='m'+(++uid),R=o.r||15;
+let s=`<svg viewBox="0 0 ${o.vw||300} ${o.vh||220}" class="g"><defs><marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--ln)"/></marker></defs>`;
+for(const [u,v,w] of edges){let [x1,y1]=pos[u],[x2,y2]=pos[v];
+if(u==v){s+=`<path d="M${x1-8} ${y1-R+2}C${x1-34} ${y1-R-36} ${x1+34} ${y1-R-36} ${x1+8} ${y1-R+2}" fill="none" stroke="var(--ln)" stroke-width="2" ${o.dir?`marker-end="url(#${id})"`:''}/>`;continue}
+const dx=x2-x1,dy=y2-y1,d=Math.hypot(dx,dy),r=o.dir?R+2:0;x2-=dx/d*r;y2-=dy/d*r;
+s+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--ln)" stroke-width="2" ${o.dir?`marker-end="url(#${id})"`:''}/>`;
+if(w!=null){const mx=(x1+x2)/2,my=(y1+y2)/2;s+=`<text x="${mx}" y="${my}" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="var(--tx)" stroke="var(--card)" stroke-width="5" paint-order="stroke">${w}</text>`}}
+for(const k in pos){const [x,y]=pos[k];s+=`<g ${o.click?`onclick="clk('${k}')" style="cursor:pointer"`:''}><circle cx="${x}" cy="${y}" r="${R}" fill="${COL[k]||'#2f8fe0'}" ${o.sel==k?'stroke="#000" stroke-width="4"':'stroke="#fff" stroke-width="2"'}/><text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central" fill="#fff" font-weight="700" font-size="15">${k}</text></g>`}
+return s+(o.extra||'')+'</svg>'}
+const X=(n,e,dir)=>{const m=n.map(()=>n.map(()=>0));e.forEach(([u,v,w])=>{const i=n.indexOf(u),j=n.indexOf(v),x=w??1;m[i][j]=x;if(!dir)m[j][i]=x});return m};
+const mt=(id,n)=>`<div class="mw"><table class="mx" id="${id}"><tr><th></th>${n.map(c=>`<th>${c}</th>`).join('')}</tr>${n.map(r=>`<tr><th>${r}</th>${n.map(()=>`<td><input inputmode="numeric" maxlength="2"></td>`).join('')}</tr>`).join('')}</table></div>`;
+function cm(id,ex){let all=true;document.querySelectorAll(`#${id} input`).forEach((el,k)=>{const n=ex.length,i=Math.floor(k/n),j=k%n,v=el.value.trim()||'0',ok=/^\d+$/.test(v)&&+v===ex[i][j];el.className=ok?'ok':'bad';if(!ok)all=false});return all}
+function fm(id,ex){document.querySelectorAll(`#${id} input`).forEach((el,k)=>{const n=ex.length;el.value=ex[Math.floor(k/n)][k%n];el.className='ok'})}
+const nm=s=>s.toUpperCase().replace(/А/g,'A').replace(/В/g,'B').replace(/С/g,'C').replace(/Е/g,'E');
+const $=id=>document.getElementById(id);
+const ek=(u,v)=>[u,v].sort().join('');
+const eset=E=>E.map(e=>ek(e[0],e[1])).sort().join(',');
+function pathOk(str,E,s,t){const p=nm(str).replace(/[^A-E]/g,'');if(p.length<2||p[0]!=s||p[p.length-1]!=t)return null;let w=0;for(let i=0;i<p.length-1;i++){const e=E.find(e=>e[0]==p[i]&&e[1]==p[i+1]);if(!e)return null;w+=e[2]}return w}
+const M1=X(N5,E3),M3=M1,M7=X(['A','B','C','D'],E7),M9=X(N5,E9),M10=X(N5,E10,true);
+const T=(n,c,t,d,b)=>`<section class="card" style="--c:${c}"><h2><b>${n}</b>${t}</h2><p>${d}</p>${b}<div class="act"><button onclick="chk(${n})">Тексеру</button><span class="m" id="m${n}"></span></div></section>`;
+const inp=(id,ph,cls)=>`<input type="text" id="${id}" placeholder="${ph||''}" autocomplete="off" ${cls?'class="n"':''}>`;
+const num=id=>`<input class="n" inputmode="numeric" id="${id}">`;
+const sel=(id,o)=>`<select id="${id}"><option value="">—</option>${o.map((x,i)=>`<option value="${i}">${x}</option>`).join('')}</select>`;
+const g6=[
+ G(Q,[['A','B'],['A','C'],['B','D'],['C','D']],{vw:140,vh:115,r:13}),
+ G(Q,[['A','B'],['B','C'],['C','D'],['D','A']],{vw:140,vh:115,r:13,dir:1}),
+ G(Q,[['A','B',2],['B','C',3],['C','A',1],['C','D',4]],{vw:140,vh:115,r:13}),
+ G(Q,[['A','B'],['A','C'],['B','D']],{vw:140,vh:115,r:13}),
+ G(Q,[['A','B'],['B','C'],['C','C']],{vw:140,vh:115,r:13})];
+const t6=['Бағдарланбаған граф','Бағдарланған граф','Салмақты граф','Ағаш','Ілмегі бар граф'];
+const a6=[0,1,2,3,4];
+const g2=G(P,['AB','AC','AD','AE','BC','BD','BE','CD','CE','DE'].map(s=>[s[0],s[1]]).map(e=>e[0]=='A'&&e[1]=='C'?[e[0],e[1],3]:e),{r:14,extra:`<g font-size="13" font-weight="700" fill="#fff"><rect x="166" y="4" width="22" height="22" rx="5" fill="#d33"/><text x="177" y="16" text-anchor="middle" dominant-baseline="central">1</text><rect x="18" y="146" width="22" height="22" rx="5" fill="#d33"/><text x="29" y="158" text-anchor="middle" dominant-baseline="central">2</text><rect x="212" y="40" width="22" height="22" rx="5" fill="#d33"/><text x="223" y="52" text-anchor="middle" dominant-baseline="central">3</text></g>`});
+const defs=['Екі төбені байланыстыратын сызық','Бағытталған қыр','Қырлармен қосылған төбелер тізбегі','Төбелер мен қырлар жиынтығы','Графтың нүктесі (вершинасы)'];
+const L8=['Граф','Төбе','Қыр','Доға','Жол'];
+const A8=[3,4,0,1,2];
+const cards=[
+T(1,'#1e88c9','Графтың элементтерін анықта','Суретте бағдарланбаған, салмақталмаған граф бейнеленген. Төбелер мен қырларды жазыңыз (мысалы: AB, AC).',G(P,E1)+`<div class="row"><label>1) Графтың төбелерінің жиынын жазыңыз:</label>${inp('v1','A, B, ...')}</div><div class="row"><label>2) Графтың қырларының жиынын жазыңыз:</label>${inp('e1','AB, AC, ...')}</div><div class="row"><label>3) Графта неше төбе бар?</label>${num('nv')}</div><div class="row"><label>4) Графта неше қыр бар?</label>${num('ne')}</div>`),
+T(2,'#e0409a','Графтың элементтерін белгілеңіз','Қызыл белгілермен көрсетілген элементтердің атын таңдаңыз.',g2+`<div class="pairs"><span>1 –</span>${sel('s2a',['төбе','қыр','салмақ'])}<span>2 –</span>${sel('s2b',['төбе','қыр','салмақ'])}<span>3 –</span>${sel('s2c',['төбе','қыр','салмақ'])}</div>`),
+T(3,'#2fb24f','Іргелестік матрицасын құрыңыз','Салмақталған граф үшін матрицаны толтырыңыз (қыр жоқ болса – 0).',G(P,E3)+mt('x3',N5)),
+T(4,'#f08a1b','Төбелердің дәрежесін анықтаңыз','Әр төбенің дәрежесін табыңыз (бағдарланбаған граф).',G(P,[['A','B'],['A','C'],['B','C'],['B','D'],['C','E'],['D','E']])+`<div class="row">${N5.map(k=>`<span>deg(${k}) =</span>${num('d'+k)}`).join('')}</div>`),
+T(5,'#8a4fd6','Жолды табыңыз','Граф бағдарланған және салмақталған. Төбелерді ретімен жазыңыз (мысалы: ABDE).',G(P5,E5,{dir:1,vw:310,vh:200})+`<div class="row"><label>1) А-дан E-ге дейінгі бір жолды жазыңыз:</label>${inp('p1','ABDE')}</div><div class="row"><label>2) А-дан E-ге дейінгі басқа жолды жазыңыз:</label>${inp('p2','ACDE')}</div><div class="row"><label>3) A–C–D–E жолының ұзындығы қандай?</label>${num('p3')}</div>`),
+T(6,'#1e88c9','Әр графтың түрін анықта','Әр графтың қай түрге жататынын көрсетіңіз.',`<div class="gs">${g6.map((s,i)=>`<div>${s}${sel('t6'+i,t6)}</div>`).join('')}</div>`),
+T(7,'#2fb24f','Шарт бойынша граф құрыңыз','Төбелер: A, B, C, D. Қырлар және олардың салмақтары: AB – 4, AC – 2, BC – 5, BD – 1, CD – 3. Іргелестік матрицасын (салмақталған граф) толтырыңыз.',mt('x7',['A','B','C','D'])),
+T(8,'#f08a1b','Сәйкестікті орнатыңыз','Әр ұғымға дұрыс анықтаманы таңдаңыз.',`<div class="pairs">${L8.map((l,i)=>`<b>${i+1}) ${l}</b>${sel('c8'+i,defs)}`).join('')}</div>`),
+T(9,'#e0409a','Шарт бойынша граф құрыңыз','Бағдарланбаған граф: төбелер A, B, C, D, E. Қырлар: AB, AC, BC, CD, DE. Қыр салу үшін екі төбені бірінен кейін бірін басыңыз (қайта бассаңыз – өшеді).',`<div id="gb"></div><div class="act" style="margin-top:0"><button class="s" onclick="E9s=new Set();sel9=null;dr9()">Тазалау</button></div>`),
+T(10,'#8a4fd6','Ең қысқа жолды табыңыз (есеп)','Берілген бағытталған графта A-дан E-ге дейінгі ең қысқа жолды табыңыз. Іргелестік матрицасын толтырыңыз.',G(P10,E10,{dir:1,vw:300,vh:210})+mt('x10',N5)+`<div class="row"><label>Жауабы (жол):</label>${inp('q1','ADE')}</div><div class="row"><label>Жолдың ұзындығы:</label>${num('q2')}</div>`)];
+$('app').innerHTML=cards.join('');
+let E9s=new Set(),sel9=null;
+function dr9(){$('gb').innerHTML=G(P,[...E9s].map(k=>[k[0],k[1]]),{click:1,sel:sel9,r:17})}
+function clk(k){if(!sel9){sel9=k}else if(sel9==k){sel9=null}else{const e=ek(sel9,k);E9s.has(e)?E9s.delete(e):E9s.add(e);sel9=null}dr9()}
+dr9();
+const val=id=>$(id).value.trim();
+function mk(c,el){el.className=c?'ok':'bad';return c}
+const C={
+1(){const v=[...new Set(nm(val('v1')).replace(/[^A-E]/g,''))].sort().join('')=='ABCDE';
+const es=[...new Set((nm(val('e1')).match(/[A-E]{2}/g)||[]).map(s=>ek(s[0],s[1])))].sort().join(',')==eset(E1);
+return [mk(v,$('v1')),mk(es,$('e1')),mk(+val('nv')==5&&val('nv')!=='',$('nv')),mk(+val('ne')==6&&val('ne')!=='',$('ne'))].every(Boolean)},
+2(){return [['s2a','0'],['s2b','1'],['s2c','2']].map(([i,a])=>mk(val(i)===a,$(i))).every(Boolean)},
+3(){return cm('x3',M3)},
+4(){const d={A:2,B:3,C:3,D:2,E:2};return N5.map(k=>mk(val('d'+k)!==''&&+val('d'+k)==d[k],$('d'+k))).every(Boolean)},
+5(){const a=mk(pathOk(val('p1'),E5,'A','E')!==null,$('p1')),b=mk(pathOk(val('p2'),E5,'A','E')!==null&&nm(val('p2'))!=nm(val('p1')),$('p2')),c=mk(val('p3')!==''&&+val('p3')==7,$('p3'));return a&&b&&c},
+6(){return t6.map((_,i)=>mk(val('t6'+i)===String(a6[i]),$('t6'+i))).every(Boolean)},
+7(){return cm('x7',M7)},
+8(){return L8.map((_,i)=>mk(val('c8'+i)===String(A8[i]),$('c8'+i))).every(Boolean)},
+9(){return [...E9s].sort().join(',')==eset(E9)},
+10(){const m=cm('x10',M10),a=mk(nm(val('q1'))=='ADE',$('q1')),b=mk(val('q2')!==''&&+val('q2')==6,$('q2'));return m&&a&&b}};
+const ANS={1:'Төбелер: A, B, C, D, E. Қырлар: AB, AC, BD, BE, CE, DE. 5 төбе, 6 қыр.',2:'1 – төбе, 2 – қыр, 3 – салмақ.',3:'Матрица толтырылды.',4:'deg(A)=2, deg(B)=3, deg(C)=3, deg(D)=2, deg(E)=2.',5:'Мысалы: A–B–D–E және A–C–D–E. A–C–D–E ұзындығы = 1 + 4 + 2 = 7.',6:'Бағдарланбаған, бағдарланған, салмақты, ағаш, ілмегі бар граф.',7:'Матрица толтырылды.',8:'1 – D, 2 – E, 3 – A, 4 – B, 5 – C.',9:'Қырлар: AB, AC, BC, CD, DE.',10:'Ең қысқа жол: A–D–E, ұзындығы 2 + 4 = 6.'};
+const done=new Set();
+function chk(n){const ok=C[n](),m=$('m'+n);m.className='m '+(ok?'ok':'bad');m.textContent=ok?'✓ Дұрыс!':'✗ Қайта тексеріңіз';if(ok)done.add(n);$('pr').textContent=`Орындалды: ${done.size} / 10`}
+function show(n){const m=$('m'+n);if(n==3)fm('x3',M3);if(n==7)fm('x7',M7);if(n==10)fm('x10',M10);
+if(n==9){E9s=new Set(E9.map(e=>ek(e[0],e[1])));sel9=null;dr9()}
+if(n==1){$('v1').value='A, B, C, D, E';$('e1').value='AB, AC, BD, BE, CE, DE';$('nv').value=5;$('ne').value=6}
+if(n==2){$('s2a').value=0;$('s2b').value=1;$('s2c').value=2}
+if(n==4)N5.forEach((k,i)=>$('d'+k).value=[2,3,3,2,2][i]);
+if(n==5){$('p1').value='ABDE';$('p2').value='ACDE';$('p3').value=7}
+if(n==6)t6.forEach((_,i)=>$('t6'+i).value=i);
+if(n==8)A8.forEach((a,i)=>$('c8'+i).value=a);
+if(n==10){$('q1').value='ADE';$('q2').value=6}
+m.className='m i';m.textContent=ANS[n]}
+</script></body></html>
